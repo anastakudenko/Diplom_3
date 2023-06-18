@@ -1,4 +1,5 @@
 package pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -30,42 +31,48 @@ public class PersonalAreaPage {
         System.out.println(driver.findElement(fieldPassword));
         driver.findElement(fieldPassword).sendKeys(userPassword);
     }
+    @Step("Клик по по кнопке регистрации")
     public void clickButtonRegistration() {
         driver.findElement(buttonRegistration).click();
     }
-
+    @Step("Проверка видимости ошибки")
     public void visibleError() {
         driver.findElement(errorRegistration).isDisplayed();
     }
+    @Step("Получение текста ошибки")
     public String getError() {
         return driver.findElement(errorRegistration).getText();
     }
+    @Step("Клик по кнопке Войти на странице регистрации")
     public void clickLoginButtonInRegistrationForm() {
         driver.findElement(buttonLoginForCheckRegistration).click();
     }
+    @Step("Клик по кнопке Войти")
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
+    @Step("Проверка видимости кнопки Войти")
     public void visibleLoginButton() {
         driver.findElement(loginButton).isDisplayed();
     }
 
+    @Step("Проверка видимости кнопки Личный кабинет")
     public void visiblePersonalArea() {
         driver.findElement(personalArea).isDisplayed();
     }
 
+    @Step("Клик по по кнопке Личного кабинета")
     public void clickPersonalArea() {
         driver.findElement(personalArea).click();
     }
-
+    @Step("Клик по по кнопке восстановления аккаунта")
     public void clickRecoverPasswordButton() {
         driver.findElement(recoverPasswordButton).click();
     }
-
     public void visibleProfile() {
         driver.findElement(profileUser).isDisplayed();
     }
-
+    @Step("Клик по по выхода из аккаунта")
     public void clickLogoutButton() {
         driver.findElement(buttonLogout).click();
     }

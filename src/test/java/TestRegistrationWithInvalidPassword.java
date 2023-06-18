@@ -1,17 +1,13 @@
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.PersonalAreaPage;
 
 @RunWith(Parameterized.class)
-public class TestRegistrationWithInvalidPassword {
-        private WebDriver driver;
+public class TestRegistrationWithInvalidPassword extends BaseTest {
         private final String userName;
         private final String userEmail;
         private final String userPassword;
@@ -29,8 +25,8 @@ public class TestRegistrationWithInvalidPassword {
 
         @Before
         public void setUp() {
-            driver = new ChromeDriver();
-            driver.get("https://stellarburgers.nomoreparties.site/register");
+            baseSetUp();
+            driver.get(baseUrl + "/register");
         }
 
         @Test
@@ -44,9 +40,5 @@ public class TestRegistrationWithInvalidPassword {
             testRegistry.clickButtonRegistration();
             testRegistry.visibleError();
             Assert.assertEquals("Текст ошибки не совпадает", testRegistry.getError(), expectedAnswer);
-        }
-        @After
-        public void teardown() {
-            driver.quit();
         }
 }

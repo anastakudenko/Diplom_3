@@ -1,18 +1,13 @@
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.ConstructorPage;
 
-public class TestClickTabs {
-    private WebDriver driver;
-
+public class TestClickTabs extends BaseTest {
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        baseSetUp();
+        driver.get(baseUrl);
     }
 
     @Test
@@ -37,10 +32,5 @@ public class TestClickTabs {
         ConstructorPage testClickTabs = new ConstructorPage(driver);
         testClickTabs.clickSauceTab();
         testClickTabs.visibleSauce();
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
     }
 }
